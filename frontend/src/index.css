@@ -1,21 +1,9 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
 * {
   box-sizing: border-box;
 }
-
+body {
+  font-family: 'Pangolin', cursive;
+}
 .header {
   padding: 150px; /* some padding */
   text-align: center; /* center the text */
@@ -52,6 +40,19 @@ code {
   background-color: #ddd;
   color: black;
 }
+
+.collapse-button {
+  display: block;
+  width: 100%;
+}
+
+.collapse-content.collapsed {
+  display: none;
+}
+
+.collapsed-content.expanded {
+  display: block;
+}
 /* Column container */
 .row {  
   display: -ms-flexbox; /* IE10 */
@@ -59,6 +60,7 @@ code {
   -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
 } 
+
 
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
@@ -68,7 +70,14 @@ code {
   background-color: #f1f1f1;
   padding: 20px;
 }
-
+.img {
+  max-width: 60%;
+  display: block; 
+  max-height: 100%;
+  /* width: 60%;
+  display: block;
+  text-align: center;  margin-left: 100px; */
+}
 /* Main column */
 .main {   
   -ms-flex: 70%; /* IE10 */
@@ -182,7 +191,25 @@ input[type=text], input[type=number], input[type=password] {
 .routeButton:hover {
   background-color: #45a049;
 }
+/* Filter buttons */
+.btn {
+  border: none;
+  outline: none;
+  margin: 12px 16px;
+  width: 200px;
+  height: 40px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
 
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
 
 @media screen and (max-width: 650px) {
   .column {

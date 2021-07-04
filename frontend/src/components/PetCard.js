@@ -11,6 +11,7 @@ function PetCard({name,image, age, alt, type,gender, description}) {
         <p className="title">{gender}</p>
         <p>{description}</p>
         <a className="card button" href='/'>Связаться с куратором</a>
+
       </div>
     </div>
    </div>

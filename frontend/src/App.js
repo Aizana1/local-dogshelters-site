@@ -13,23 +13,33 @@ function App() {
   const [homestays, setHomestaysList] = useState([])
   const [clinics, setClinics] = useState([])
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/pets.json')
-      .then(({ data }) => setPetsList(data.pets))
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:4000/pets')
+  //     // .then(( data ) => console.log(data))
+  //     const response = await fetch(`http://localhost:4000/game/${i}/${point}`)
+  //   const {text,count} = await response.json();
+  //   console.log(count)
+  // }, [])
+  
+    // dispatch({
+    //   type: "QUESTION",
+    //   payload: [text,count]
+    
+   // })
+  //}
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/homestays.json')
-      .then(({ data }) => setHomestaysList(data.homestays))
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:3000/homestays.json')
+  //     .then(({ data }) => setHomestaysList(data.homestays))
+  // }, [])
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/clinics.json')
-      .then(({ data }) => setClinics(data.clinics))
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:3000/clinics.json')
+  //     .then(({ data }) => setClinics(data.clinics))
+  // }, [])
 
   return (
     <div className="App">

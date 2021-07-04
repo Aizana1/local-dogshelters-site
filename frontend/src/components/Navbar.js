@@ -5,8 +5,10 @@ import logoSvg from '../assets/img/house.svg'
 function Navbar() {
   return (
     <div className="navbar">
-      <Link to="/"><i class="fa fa-home"></i></Link>
+      <Link to="/"><i className="fa fa-home"></i></Link>
       <Link to="/pets">Найти себе питомца</Link>
+      <Link to="/lost">Потеряшки</Link>
+
       <Link to="/homestay">Найти передержку</Link>
       <Link to="/vetclinics">Найти ветклинику</Link>
       <Link to="/places">Dog-friendly места</Link>

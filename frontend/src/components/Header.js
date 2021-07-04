@@ -7,8 +7,8 @@ function Header() {
     }}>
       
       {/* <img src="/image/eFIK9-Rysmk.jpg" alt="logo"/> */}
-    <h1 >Adopt. Don't buy</h1>
-    <p>A website for finding a pet</p>
+    <h1  >В хорошие руки</h1>
+    <p style={{fontSize: 25}}>Не покупайте, возьмите в приюте</p>
   </div> 
   )
 }

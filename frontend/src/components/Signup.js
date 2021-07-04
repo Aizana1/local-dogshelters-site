@@ -2,8 +2,8 @@ import React from 'react'
 
 function Signup() {
   return (
-    <div class="container">
-  <div class="form">
+    <div className="container">
+  <div className="form">
     <form action="/signup" method="post">
           <div>
         <label>Username:</label><br />
@@ -18,7 +18,7 @@ function Signup() {
         <input type="password" name="password" required />
       </div>
             {/* <div style="margin-top: 10px"> */}
-        <input class="routeButton" type="submit" value="Sign Up" />
+        <input className="routeButton" type="submit" value="Sign Up" />
       {/* </div> */}
     </form>
   </div>

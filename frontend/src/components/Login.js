@@ -29,8 +29,8 @@ const response = await fetch(`http://localhost:4000/login`, {
 
   }
   return (
-    <div class="container">
-  <div class="form">
+    <div className="container">
+  <div className="form">
 
     <form action="/login" method="post" onSubmit={sendAnswer}>
            <div>
@@ -42,12 +42,12 @@ const response = await fetch(`http://localhost:4000/login`, {
         <input  ref={passwordInput} type="password" name="password" required/>
       </div>
       {/* <div style="margin-top: 10px;"> */}
-        <input class="routeButton" type="submit" value="Log In" />
+        <input className="routeButton" type="submit" value="Log In" />
       {/* </div> */}
     </form>
   </div>
 </div>
-    // <div className="login-form">
+    // <div classNameName="login-form">
     //   <h3>Login Page</h3>
     //   <form action="/login" method="POST">
     //     <div className="input-group">
