@@ -47,21 +47,7 @@ const response = await fetch(`http://localhost:4000/login`, {
     </form>
   </div>
 </div>
-    // <div classNameName="login-form">
-    //   <h3>Login Page</h3>
-    //   <form action="/login" method="POST">
-    //     <div className="input-group">
-    //       <label for="email">Email:</label>
-    //       <input type="email" name="email" />
-    //     </div>
-    //     <div className="input-group">
-    //       <label for="password">Password:</label>
-    //       <input type="password" name="password" />
-    //     </div>
-    //     <button>Login</button>
-    //   </form>
-    //   <a href="/register">Register</a>
-    // </div>
+    
   )
 }
 

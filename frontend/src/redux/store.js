@@ -4,7 +4,8 @@ import reducer from "./reducer"
 const initialState = {
   username: '',
   email: '',
-  password: ''
+  password: '',
+  pets: []
 }
 
 

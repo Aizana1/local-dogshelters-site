@@ -23,26 +23,6 @@ function Signup() {
     </form>
   </div>
 </div>
-    // <div className="login-form">
-     
-    //   <h3>Register Page</h3>
-    //   <form action="/signup" method="POST">
-    //     <div className="input-group">
-    //       <label for="username">Username:</label>
-    //       <input type="text" name="username" />
-    //     </div>
-    //     <div className="input-group">
-    //       <label for="email">Email:</label>
-    //       <input type="email" name="email" />
-    //     </div>
-    //     <div className="input-group">
-    //       <label for="password">Password:</label>
-    //       <input type="password" name="password" />
-    //     </div>
-    //     <button>Register</button>
-    //   </form>
-    //   <a href="/login">Login</a>
-    // </div>
   )
 }
 

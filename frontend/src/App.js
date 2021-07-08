@@ -1,47 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Route } from 'react-router'
-import { Navbar, Dashboard, Login, PetsList, Signup } from './components'
+import { Navbar, Dashboard, Login, PetsList, Signup,Homestays,Clinics,  DogFriendlyPlaces,  HelpPage } from './components'
 import Home from './pages/Home'
 import axios from 'axios'
-import Homestays from './components/Homestays'
-import Clinics from './components/Clinics'
-import DogFriendlyPlaces from './components/DogFriendlyPlaces'
-import HelpPage from './components/HelpPage'
 
 function App() {
   const [petsList, setPetsList] = useState([])
   const [homestays, setHomestaysList] = useState([])
   const [clinics, setClinics] = useState([])
 
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:4000/pets')
-  //     // .then(( data ) => console.log(data))
-  //     const response = await fetch(`http://localhost:4000/game/${i}/${point}`)
-  //   const {text,count} = await response.json();
-  //   console.log(count)
-  // }, [])
-  
-    // dispatch({
-    //   type: "QUESTION",
-    //   payload: [text,count]
-    
-   // })
-  //}
-
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:3000/homestays.json')
-  //     .then(({ data }) => setHomestaysList(data.homestays))
-  // }, [])
-
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:3000/clinics.json')
-  //     .then(({ data }) => setClinics(data.clinics))
-  // }, [])
-
-  return (
+   return (
     <div className="App">
       <Navbar />
 

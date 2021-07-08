@@ -13,12 +13,13 @@ mongoose.connect('mongodb://localhost:27017/pets-base', {
 const petSchema = new mongoose.Schema({
   name: { type: String, required: true },
   type: { type: String, required: true },
-  image: { type: String, required: true },
+  image: { type: String, required: false },
   alt: { type: String, required: true },
   gender: { type: String, required: true },
   breed: { type: String, required: true },
   age: { type: Number, required: true },
   description: { type:String , required: true },
+  phone: {type: Number, required: true}
 })
 const Pet = mongoose.model('Pet', petSchema)
 
@@ -30,6 +31,14 @@ app.get('/pets', async (req, res) => {
    pets = pets.map((el) => el)
 res.json(pets)
 })
+
+app.post('/new', (req, res) => {
+  console.log(req.body);
+  Pet.create(req.body, (err, data) => {
+      if(err) return console.log(err);
+      res.send(('saved to db: ' + data));
+  })
+});
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`)

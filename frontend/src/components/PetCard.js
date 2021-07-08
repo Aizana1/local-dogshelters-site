@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PetCard({name,image, age, alt, type,gender, description}) {
+function PetCard({name,image, age, alt, type,gender, description, phone}) {
   return (
    <div className="column">
     <div className="card" >
@@ -10,7 +10,7 @@ function PetCard({name,image, age, alt, type,gender, description}) {
         <p className="title">{type}</p>
         <p className="title">{gender}</p>
         <p>{description}</p>
-        <a className="card button" href='/'>Связаться с куратором</a>
+        <a className="card button" >{phone}</a>
 
       </div>
     </div>

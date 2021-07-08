@@ -1,27 +1,21 @@
 import React from 'react'
 
 const initialState = {
-  username: '',
-  email: '',
-  password: '',
+   pets: [],
 }
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'LOGIN':
-      // console.log(action.payload);
+   
+    case 'INIT_PETS':
       return {
         ...state,
-        username: action.payload[0],
-        email: action.payload[1],
-        password: action.payload[2],
+        pets: action.payload,
       }
-    case 'SIGNUP':
+    case 'FILTER_BY_TYPE':
       return {
         ...state,
-        username: action.payload[0],
-        email: action.payload[1],
-        password: action.payload[2],
+        pets: state.pets.filter((el) => el.type === action.payload),
       }
 
     default:

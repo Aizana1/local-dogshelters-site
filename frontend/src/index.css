@@ -41,18 +41,7 @@ body {
   color: black;
 }
 
-.collapse-button {
-  display: block;
-  width: 100%;
-}
 
-.collapse-content.collapsed {
-  display: none;
-}
-
-.collapsed-content.expanded {
-  display: block;
-}
 /* Column container */
 .row {  
   display: -ms-flexbox; /* IE10 */
@@ -74,9 +63,6 @@ body {
   max-width: 60%;
   display: block; 
   max-height: 100%;
-  /* width: 60%;
-  display: block;
-  text-align: center;  margin-left: 100px; */
 }
 /* Main column */
 .main {   
@@ -167,7 +153,7 @@ flex-wrap: wrap;
   border: none;
   /* background: #f1f1f1; */
 }
-input[type=text], input[type=number], input[type=password] {
+input[type=text], input[type=number], input[type=password], select, textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -190,6 +176,9 @@ input[type=text], input[type=number], input[type=password] {
 
 .routeButton:hover {
   background-color: #45a049;
+}
+.newAd{
+width: 50%;
 }
 /* Filter buttons */
 .btn {

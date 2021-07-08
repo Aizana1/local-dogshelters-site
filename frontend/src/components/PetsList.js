@@ -1,47 +1,78 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { PetCard } from '../components'
-import Filter from "./Filter"
+import AddBtn from './AddBtn'
+
+const Input = () => {
+  return <AddBtn />
+}
 
 function PetsList() {
-  let [pets, setPets] = useState([])
+  const [petsToDisplay, setPetsToDisplay] = useState()
+  const dispatch = useDispatch()
+  const pets = useSelector((state) => state.pets)
+
+  const [inputList, setInputList] = useState([])
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/pets')
+      const result = await response.json()
+      dispatch({ type: 'INIT_PETS', payload: result })
+      // непосредственное обновление состояния при условии, что компонент не размонтирован
+      // if (!cleanupFunction) dispatch({ type: 'INIT_PETS', payload: result });
+    } catch (e) {
+      console.error(e.message)
+    }
+  }
 
   useEffect(() => {
     let cleanupFunction = false
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:4000/pets')
-        const result = await response.json()
-
-        // непосредственное обновление состояния при условии, что компонент не размонтирован
-        if (!cleanupFunction) setPets(result)
-      } catch (e) {
-        console.error(e.message)
-      }
-    }
-
     fetchData()
     return () => {
       cleanupFunction = true
     }
   }, [])
-const filterSelection = (type) => {
-if (type === 'Собака') {
-  return pets.map((el) => el.type === 'Собака')
-} 
-}
+
+  useEffect(() => {
+    if (!pets || pets.length === 0) fetchData()
+  }, [pets])
+
+  const onAddBtnClick = (event) => {
+    setInputList(inputList.concat(<Input key={inputList.length} />))
+  }
+
+  const filterFunc = (type) => {
+    setPetsToDisplay(pets.filter((el) => el.type === type))
+  }
+
   return (
     <>
-    <div id="myBtnContainer">
-  {/* <button class="btn active" onclick="filterSelection('all')">Все</button> */}
-  <button className="btn" onClick={() => filterSelection('Собака')}> Собаки</button>
-  <button className="btn" onClick={() => filterSelection('Кот')}>Коты</button>
-</div>
-    {/* <Filter /> */}
-    <div className="petsList">
-      {pets.map((obj) => (
-        <PetCard key={obj.name} {...obj} />
-      ))}
-    </div>
+      <div id="myBtnContainer">
+        <button className="btn" onClick={() => filterFunc('Собака')}>
+          Собаки
+        </button>
+        <button className="btn" onClick={() => filterFunc('Кот')}>
+          Коты
+        </button>
+      </div>
+      {/* <Filter /> */}
+      <button
+        style={{ backgroundColor: '##000' }}
+        className="btn newAd"
+        onClick={onAddBtnClick}
+      >
+        Добавить новое объявление
+      </button>
+
+      <div> {inputList}</div>
+      <div className="petsList">
+      {petsToDisplay 
+          ? petsToDisplay.map((obj) => <PetCard key={obj.name} {...obj} />)
+          : pets.map((obj) => <PetCard key={obj.name} {...obj} />)}
+        
+      </div>
     </>
   )
 }
