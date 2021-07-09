@@ -1,7 +1,11 @@
 import React from 'react'
 
 const initialState = {
-   pets: [],
+  username: '',
+  email: '',
+  password: '',
+  pets: [],
+  user: '',
 }
 
 function reducer(state = initialState, action) {
@@ -17,7 +21,16 @@ function reducer(state = initialState, action) {
         ...state,
         pets: state.pets.filter((el) => el.type === action.payload),
       }
-
+      case 'INIT_USER':
+        return {
+          ...state,
+          user: action.payload,
+        }
+        case 'SIGN_UP':
+        return {
+          ...state,
+          user: action.payload,
+        }
     default:
       return state
   }

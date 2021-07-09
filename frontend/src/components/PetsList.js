@@ -12,6 +12,7 @@ function PetsList() {
   const [petsToDisplay, setPetsToDisplay] = useState()
   const dispatch = useDispatch()
   const pets = useSelector((state) => state.pets)
+  const username = useSelector((state) => state.username)
 
   const [inputList, setInputList] = useState([])
 
@@ -19,6 +20,7 @@ function PetsList() {
     try {
       const response = await fetch('http://localhost:4000/pets')
       const result = await response.json()
+    //  console.log(result)
       dispatch({ type: 'INIT_PETS', payload: result })
       // непосредственное обновление состояния при условии, что компонент не размонтирован
       // if (!cleanupFunction) dispatch({ type: 'INIT_PETS', payload: result });
@@ -58,13 +60,15 @@ function PetsList() {
         </button>
       </div>
       {/* <Filter /> */}
-      <button
+      {username 
+      ? <button
         style={{ backgroundColor: '##000' }}
         className="btn newAd"
         onClick={onAddBtnClick}
       >
         Добавить новое объявление
       </button>
+      : 'Если вы хотите добавить объявление, пожалуйста, авторизуйтесь'}
 
       <div> {inputList}</div>
       <div className="petsList">

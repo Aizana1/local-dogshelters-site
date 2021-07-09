@@ -1,53 +1,70 @@
-import React from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { useRef } from "react";
+import React, { useState } from 'react'
+import {useHistory} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Login() {
-  const dispatch = useDispatch();
-  const usernameInput = useRef()
-  const passwordInput = useRef()
-  const username = useSelector(state => state.username)
-  const email = useSelector (state => state.email)
-  const password = useSelector (state => state.password);
+  const dispatch = useDispatch()
+ //  const user = useSelector((state) => state.user)
+  const history = useHistory()
+  const initForm = { username: '', password: '' }
+
+  const [formValue, setFormValue] = useState(initForm)
+
+  const onChangeHandler = ({ target }) => {
+    const { name, value } = target
+    setFormValue((pre) => ({ ...pre, [name]: value }))
+  }
 
   async function sendAnswer(e) {
-    e.preventDefault();
-const username = usernameInput.current.value
-const password = passwordInput.current.value 
+    e.preventDefault()
 
-const response = await fetch(`http://localhost:4000/login`, {
-        method: "POST",
-        headers: {"Content-Type": "Application/json"},
-        body: JSON.stringify({username, password})
-      })
-      const result = await response.json(); 
-  
-      dispatch({ type: "LOGIN", payload: result 
+    setFormValue(initForm)
+    // console.log(formValue)
+
+    const request = await fetch(`http://localhost:4000/login`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formValue),
     })
-    usernameInput.current.value = '';
-    passwordInput.current.value = '';
+     const {user} = await request.json();
+    console.log(user)
+    // const { user.username } = await request.json()
+      dispatch({ type: 'INIT_USER', payload: user.username  })
 
+    // console.log(username)
+    setFormValue(initForm)
+    // setUser(username)
+    history.push('/dashboard')
   }
   return (
     <div className="container">
-  <div className="form">
-
-    <form action="/login" method="post" onSubmit={sendAnswer}>
-           <div>
-        <label>Username:</label>
-        <input ref={usernameInput} type="text" name="username" required/>
+      <div className="form">
+        <form onSubmit={sendAnswer} onChange={onChangeHandler}>
+          <div>
+            <label>Username:</label>
+            <input
+              value={formValue.username}
+              type="text"
+              name="username"
+              required
+            />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input
+              value={formValue.password}
+              type="password"
+              name="password"
+              required
+            />
+          </div>
+          {/* <div style="margin-top: 10px;"> */}
+          <input className="routeButton" type="submit" value="Log In" />
+          {/* </div> */}
+        </form>
       </div>
-      <div>
-        <label>Password:</label>
-        <input  ref={passwordInput} type="password" name="password" required/>
-      </div>
-      {/* <div style="margin-top: 10px;"> */}
-        <input className="routeButton" type="submit" value="Log In" />
-      {/* </div> */}
-    </form>
-  </div>
-</div>
-    
+    </div>
   )
 }
 
